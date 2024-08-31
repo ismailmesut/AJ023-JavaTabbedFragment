@@ -9,14 +9,13 @@ import androidx.lifecycle.ViewModel;
 
 public class PageViewModel extends ViewModel {
 
-    private MutableLiveData<Integer> mIndex = new MutableLiveData<>();
-    private LiveData<String> mText = map(mIndex, input -> "Hello world from section: " + input);
+    private MutableLiveData<String> nameInput = new MutableLiveData<>();
 
-    public void setIndex(int index) {
-        mIndex.setValue(index);
+    public void setName(String name) {
+        nameInput.setValue(name);
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public LiveData<String> getName() {
+        return nameInput;
     }
 }

@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
+
 
 
 import android.text.Editable;
@@ -22,11 +22,20 @@ public class FirstFragment extends Fragment {
 
 
     PageViewModel pageViewModel;
+    public static FirstFragment newInstance() {
+        return new FirstFragment();
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         pageViewModel = new ViewModelProvider(requireActivity()).get(PageViewModel.class);
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_first,container,false);
     }
 
     @Override
@@ -42,7 +51,7 @@ public class FirstFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                pageViewModel.setName(s.toString());
             }
 
             @Override
